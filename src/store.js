@@ -1,9 +1,11 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
-import usersReducer from './reducers/users.js'
 import thunk from 'redux-thunk'
+import usersReducer from './reducers/users.js'
+import currentUser from './reducers/currentUser.js'
 
 const reducer = combineReducers({
-    users: usersReducer
+    users: usersReducer,
+    currentUser
 })
 
 const composeEnhancers = typeof window === 'object' &&
