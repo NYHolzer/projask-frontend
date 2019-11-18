@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login.js'
+import Logout from './components/Logout.js'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/currentUser.js'
 
