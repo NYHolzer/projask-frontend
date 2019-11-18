@@ -6,6 +6,12 @@ export const setCurrentUser = user => {
     }
 }
 
+// On frontend clearing out the user
+export const clearCurrentUser = () => {
+    return {
+        type: "CLEAR_CURRENT_USER"
+    }
+}
 
 // asynchronous action creators
 export const login = credentials => {
