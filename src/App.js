@@ -14,12 +14,15 @@ class App extends React.Component {
 
   render(){
     return (
-      <Login />
+      // think about having in a Navbar
+      this.props.currentUser ? <Logout/> : <Login/>
     );
   }
 
 }
 
+// I know the incoming argument is an object, state, 
+// coming from redux and has property called currentUser
 const mapStateToProps = ({ currentUser }) => {
   return {
     currentUser
