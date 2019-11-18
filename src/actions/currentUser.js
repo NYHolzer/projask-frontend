@@ -37,6 +37,16 @@ export const login = credentials => {
     }
 }
 
+// clearing session from backend
+export const logout = () => {
+    return dispatch => {
+        dispatch(clearCurrentUser())
+        return fetch("http://localhost:3001/api/v1/logout", {
+            credentials: "include",
+            method: "DELETE"
+        })
+    }
+}
 
   export const getCurrentUser = () => {
     console.log("DISPATCHING GET CURRENT USER")
