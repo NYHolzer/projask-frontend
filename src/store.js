@@ -3,12 +3,13 @@ import thunk from 'redux-thunk'
 import usersReducer from './reducers/users.js'
 import currentUser from './reducers/currentUser.js'
 import loginForm from './reducers/loginForm.js'
-
+import myTasks from './reducers/myTasks.js'
 
 const reducer = combineReducers({
     users: usersReducer,
     currentUser,
-    loginForm
+    loginForm,
+    myTasks
 })
 
 const composeEnhancers = typeof window === 'object' &&
