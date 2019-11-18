@@ -1,10 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Login from './components/Login.js'
-import Logout from './components/Logout.js'
 import { connect } from 'react-redux'
 import { getCurrentUser } from './actions/currentUser.js'
+import NavBar from './components/NavBar'
+import MainContainer from './components/MainContainer'
 
 class App extends React.Component {
 
@@ -14,19 +14,14 @@ class App extends React.Component {
 
   render(){
     return (
-      // think about having in a Navbar
-      this.props.currentUser ? <Logout/> : <Login/>
+      <div className="App">
+        <NavBar />
+        <MainContainer />
+      </div>
     );
   }
 
 }
 
-// I know the incoming argument is an object, state, 
-// coming from redux and has property called currentUser
-const mapStateToProps = ({ currentUser }) => {
-  return {
-    currentUser
-  }
-}
 
-export default connect(mapStateToProps, { getCurrentUser })(App);
+export default connect(null, { getCurrentUser })(App);
