@@ -4,12 +4,14 @@ import usersReducer from './reducers/users.js'
 import currentUser from './reducers/currentUser.js'
 import loginForm from './reducers/loginForm.js'
 import myTasks from './reducers/myTasks.js'
+import signupForm from './reducers/signupForm.js'
 
 const reducer = combineReducers({
     users: usersReducer,
     currentUser,
     loginForm,
-    myTasks
+    myTasks,
+    signupForm
 })
 
 const composeEnhancers = typeof window === 'object' &&
