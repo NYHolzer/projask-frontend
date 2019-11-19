@@ -1,10 +1,10 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import MyTasks from './MyTasks.js'
 
 const MainContainer = () => {
     return(
         <div className="MainContainer">
-            <p>THIS IS THE MAIN CONTAINER</p>
+            <MyTasks/>
         </div>
     )
 }
