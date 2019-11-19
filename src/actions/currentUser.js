@@ -1,4 +1,5 @@
 import { resetLoginForm } from './loginForm.js'
+import { resetSignupForm } from './signupForm.js'
 import { setMyTasks } from './myTasks.js'
 // synchronous action creators
 export const setCurrentUser = user => {
@@ -16,7 +17,8 @@ export const clearCurrentUser = () => {
 }
 
 // asynchronous action creators
-export const login = credentials => {
+// login fetch
+export const login = (credentials, history) => {
     console.log("credentials are", credentials) 
     return dispatch => {
         return fetch ("http://localhost:3001/api/v1/login",{
@@ -35,6 +37,7 @@ export const login = credentials => {
                 dispatch(setCurrentUser(response.data))
                 dispatch(setMyTasks(response.data.attributes.myTasks))
                 dispatch(resetLoginForm())
+                history.push('/')
             }
         })
         .catch(console.log)
@@ -52,6 +55,7 @@ export const logout = () => {
     }
 }
 
+// getCurrentUser fetch
 export const getCurrentUser = () => {
 console.log("DISPATCHING GET CURRENT USER")
 return dispatch => {
@@ -74,6 +78,7 @@ return dispatch => {
     .catch(console.log)
 }
 }
+
 // signup fetch
 export const signup = credentials => {
     return dispatch => {
