@@ -5,3 +5,8 @@ export const setMyTasks = (tasks) => {
         tasks
     } 
 }
+export const clearCurrentTasks = () => {
+    return {
+        type: "CLEAR_CURRENT_TASKS"
+    }
+}
