@@ -74,3 +74,30 @@ return dispatch => {
     .catch(console.log)
 }
 }
+// signup fetch
+export const signup = credentials => {
+    return dispatch => {
+        const userInfo = {
+            user: credentials
+        }
+        return fetch ("http://localhost:3001/api/v1/signup",{
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userInfo)
+        })
+        .then(r => r.json())
+        .then(response => {
+            if (response.error){
+                alert(response.error)
+            } else {
+                dispatch(setCurrentUser(response.data))
+                dispatch(setMyTasks(response.data.attributes.myTasks))
+                dispatch(resetSignupForm())
+            }
+        })
+        .catch(console.log)
+    }
+}
