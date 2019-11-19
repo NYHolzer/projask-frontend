@@ -27,3 +27,13 @@
   background-color: orange;
   color: white;
 }
+
+.TaskCard {
+  box-sizing: border-box;
+  width: full-screen;
+  height: auto;
+  padding: 5px;
+  border: 5px orange;
+  border-style: solid;
+  background-color: yellow;
+}
