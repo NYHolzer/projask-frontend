@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux'
@@ -10,6 +10,7 @@ import MyTasks from './components/MyTasks.js'
 import Login from './components/Login.js'
 import Logout from './components/Logout.js'
 import Signup from './components/Signup.js'
+import Home from './components/Home.js'
 
 class App extends React.Component {
 
@@ -18,10 +19,12 @@ class App extends React.Component {
   }
 
   render(){
+    const {loggedIn} = this.props
     return (
       <div className="App">
         <NavBar />
         <MainContainer />
+          <Route exact path='/' render={ ()=> loggedIn ? <MyTasks/> : <Home/> }/>
           <Route exact path='/signup' component={Signup}/>
           <Route exact path='/login' component={Login}/>
           <Route exact path='/tasks' component={MyTasks}/>
