@@ -12,3 +12,12 @@ const MyTasks = props => {
     )
 }
 
+// Takes in state of store. 
+// returns an object who's keys are whatever I want.
+const mapStateToProps = state => {
+    return {
+        tasks: state.myTasks
+    }
+}
+
+export default connect(mapStateToProps) (MyTasks)
