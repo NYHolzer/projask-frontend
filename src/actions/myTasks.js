@@ -23,8 +23,7 @@ export const createTask = (taskData) => {
     const sendableTaskData = {
         task: {
             title: taskData.title,
-            description: taskData.description,
-            user_id: taskData.userId
+            description: taskData.description
         }
     }
     return dispatch => {
