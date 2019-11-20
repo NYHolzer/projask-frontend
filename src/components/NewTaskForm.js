@@ -2,7 +2,7 @@ import React from 'react';
 import { updateNewTaskForm } from '../actions/newTaskForm.js'
 import { connect } from 'react-redux'
 
-const NewTaskForm = ({title, description, assigned_by, project_id, history, updateNewTaskForm}) => {
+const NewTaskForm = ({title, description, assigned_by, project_id, users, history, updateNewTaskForm}) => {
 
     const formData = { title, description, assigned_by, project_id }
 
@@ -30,10 +30,7 @@ const NewTaskForm = ({title, description, assigned_by, project_id, history, upda
                 onChange={handleChange}
                 value={description}
             />
-            <select value={assigned_by} onChange={handleChange}>
-                <option value="grapefruit">Grapefruit</option>
-            </select>
-            <input 
+            {/* <input 
                 placeholder="assigned by"
                 name="assigned_by"
                 onChange={handleChange}
@@ -44,7 +41,7 @@ const NewTaskForm = ({title, description, assigned_by, project_id, history, upda
                 name="project_id"
                 onChange={handleChange}
                 value={project_id} 
-            />
+            /> */}
             <input type="submit" value="Create Task"/>
         </form>
     )
@@ -54,7 +51,8 @@ const NewTaskForm = ({title, description, assigned_by, project_id, history, upda
 
 const mapStateToProps = state => {
     return {
-        formData: state.newTaskForm
+        formData: state.newTaskForm,
+        users: state.users
     }
 }
 
