@@ -11,6 +11,7 @@ import Login from './components/Login.js'
 import Logout from './components/Logout.js'
 import Signup from './components/Signup.js'
 import Home from './components/Home.js'
+import NewTask from './components/NewTask.js'
 
 class App extends React.Component {
 
@@ -27,6 +28,7 @@ class App extends React.Component {
           <Route exact path='/signup' render={({history}) => <Signup history={history}/>}/>
           <Route exact path='/login' component={Login}/>
           <Route exact path='/tasks' component={MyTasks}/>
+          <Route exact path='/tasks/new' component={NewTask}/>
       </div>
     );
   }
