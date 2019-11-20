@@ -1,6 +1,7 @@
 import { resetLoginForm } from './loginForm.js'
 import { resetSignupForm } from './signupForm.js'
 import { setMyTasks, clearCurrentTasks } from './myTasks.js'
+import { setUsers } from './users'
 
 // synchronous action creators
 export const setCurrentUser = user => {
@@ -36,6 +37,7 @@ export const login = (credentials, history) => {
             } else {
                 dispatch(setCurrentUser(response.data))
                 dispatch(setMyTasks(response.data.attributes.myTasks))
+                dispatch(setUsers(response.data.attributes.users))
                 dispatch(resetLoginForm())
                 history.push('/')
             }
@@ -73,8 +75,10 @@ return dispatch => {
         if (response.error) {
         alert(response.error)
         } else {
+        console.log(response.data)
         dispatch(setCurrentUser(response.data))
         dispatch(setMyTasks(response.data.attributes.myTasks))
+        dispatch(setUsers(response.data.attributes.users))
         }
     })
     .catch(console.log)
