@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux'
@@ -11,7 +11,7 @@ import Login from './components/Login.js'
 import Logout from './components/Logout.js'
 import Signup from './components/Signup.js'
 import Home from './components/Home.js'
-import NewTask from './components/NewTask.js'
+import NewTaskForm from './components/NewTaskForm.js'
 
 class App extends React.Component {
 
@@ -23,12 +23,13 @@ class App extends React.Component {
     const {loggedIn} = this.props
     return (
       <div className="App">
-        <NavBar />
-          <Route exact path='/' render={ ()=> loggedIn ? <MainContainer/> : <Home/> }/>
-          <Route exact path='/signup' render={({history}) => <Signup history={history}/>}/>
-          <Route exact path='/login' component={Login}/>
-          <Route exact path='/tasks' component={MyTasks}/>
-          <Route exact path='/tasks/new' component={NewTask}/>
+          {loggedIn ? <NavBar /> : <Home /> }
+          <Switch>
+            <Route exact path='/signup' render={({history}) => <Signup history={history}/>}/>
+            <Route exact path='/login' component={Login}/>
+            <Route exact path='/tasks' component={MyTasks}/>
+            <Route exact path='/tasks/new' component={NewTaskForm}/>
+          </Switch>
       </div>
     );
   }
