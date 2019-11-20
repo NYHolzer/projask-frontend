@@ -1,10 +1,11 @@
 import React from 'react';
 import { updateNewTaskForm } from '../actions/newTaskForm.js'
+import { createTask } from '../actions/myTasks.js'
 import { connect } from 'react-redux'
 
-const NewTaskForm = ({title, description, assigned_by, project_id, users, history, updateNewTaskForm}) => {
+const NewTaskForm = ({formData, users, history, updateNewTaskForm, createTask}) => {
 
-    const formData = { title, description, assigned_by, project_id }
+    const { title, description } = formData
 
     const handleChange = event => {
         const { name, value } = event.target
@@ -13,11 +14,11 @@ const NewTaskForm = ({title, description, assigned_by, project_id, users, histor
     
     const handleSubmit = event => {
         event.preventDefault()
-
+        createTask(formData)
     }
 
     return(
-        <form>
+        <form onSubmit={handleSubmit}>
             <input 
                 placeholder = "title"
                 name="title"
@@ -56,7 +57,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect (mapStateToProps, {updateNewTaskForm}) (NewTaskForm);
+export default connect (mapStateToProps, {updateNewTaskForm, createTask}) (NewTaskForm);
 
 // Tasks Schema
 // t.string "title"
