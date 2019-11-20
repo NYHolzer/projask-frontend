@@ -8,8 +8,8 @@ const NavBar = ({ currentUser, LoggedIn }) => {
     return (
         <div className="NavBar">
             {currentUser ? <strong>Welcome, {currentUser.attributes.name}</strong> : ""}
-            <NavLink exact activeClass to="/tasks">Tasks  |  </NavLink>
-            <NavLink exact activeClass to="/tasks/new"> New Task  |  </NavLink>
+            <NavLink exact activeclass="true" to="/tasks">Tasks  |  </NavLink>
+            <NavLink exact activeclass="true" to="/tasks/new"> New Task  |  </NavLink>
             {currentUser ? <Logout/> : null}
         </div>
     )
