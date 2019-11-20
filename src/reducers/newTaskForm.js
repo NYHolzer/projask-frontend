@@ -1,8 +1,8 @@
 const initialState = {
     title: "",
-    description: "",
-    assigned_by: "",
-    project_id: ""
+    description: ""
+    // assigned_by: "",
+    // project_id: ""
 }
 
 export default (state = initialState, action) => {
