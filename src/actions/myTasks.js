@@ -20,12 +20,15 @@ export const addTask = task => {
 
 // asynchronous actions
 export const createTask = (taskData) => {
+    console.log(taskData)
     const sendableTaskData = {
         task: {
             title: taskData.title,
-            description: taskData.description
+            description: taskData.description,
+            project_id: "1"
         }
     }
+    console.log(sendableTaskData)
     return dispatch => {
         return fetch("http://localhost:3001/api/v1/tasks", {
             credentials: "include",
