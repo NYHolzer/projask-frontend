@@ -47,6 +47,7 @@ export const login = (credentials, history) => {
 // clearing session from backend
 export const logout = () => {
     return dispatch => {
+        // do not need to wait for response. I'm optimistic that user will be logged out.
         dispatch(clearCurrentUser())
         dispatch(clearCurrentTasks())
         return fetch("http://localhost:3001/api/v1/logout", {
