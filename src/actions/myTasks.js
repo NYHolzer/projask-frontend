@@ -10,3 +10,10 @@ export const clearCurrentTasks = () => {
         type: "CLEAR_CURRENT_TASKS"
     }
 }
+
+export const addTask = task => {
+    return {
+        type: "ADD_TASK",
+        task
+    }
+}
