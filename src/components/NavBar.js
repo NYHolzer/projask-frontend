@@ -4,13 +4,13 @@ import Login from './Login.js'
 import Logout from './Logout.js'
 import { NavLink } from 'react-router-dom'
 
-const NavBar = ({ currentUser }) => {
+const NavBar = ({ currentUser, LoggedIn }) => {
     return (
         <div className="NavBar">
             {currentUser ? <strong>Welcome, {currentUser.attributes.name}</strong> : ""}
-            <NavLink to="/tasks">Tasks  |  </NavLink>
-            <NavLink to="/tasks/new"> New Task  |  </NavLink>
-            {currentUser ? <Logout/> : <Login/>}
+            <NavLink exact activeClass to="/tasks">Tasks  |  </NavLink>
+            <NavLink exact activeClass to="/tasks/new"> New Task  |  </NavLink>
+            {currentUser ? <Logout/> : null}
         </div>
     )
 }
@@ -19,7 +19,8 @@ const NavBar = ({ currentUser }) => {
 // coming from redux and has property called currentUser
 const mapStateToProps = ({ currentUser }) => {
     return {
-      currentUser
+      currentUser,
+      loggedIn: !!currentUser
     }
 }
 
