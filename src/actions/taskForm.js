@@ -1,12 +1,12 @@
 // synchronous actions
-export const updateNewTaskForm = (name, value) => {
+export const updateTaskForm = (name, value) => {
     return {
         type: "UPDATE_NEW_TASK_FORM",
         formData: { name, value }
     }
 }
 
-export const resetNewTaskForm = () => {
+export const resetTaskForm = () => {
     return {
         type: "RESET_NEW_TASK_FORM"
     }

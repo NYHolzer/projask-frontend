@@ -11,7 +11,7 @@ import Login from './components/Login.js'
 import Logout from './components/Logout.js'
 import Signup from './components/Signup.js'
 import Home from './components/Home.js'
-import NewTaskForm from './components/NewTaskForm.js'
+import TaskForm from './components/TaskForm.js'
 import TaskDetail from './components/TaskDetail.js'
 
 class App extends React.Component {
@@ -29,7 +29,7 @@ class App extends React.Component {
             <Route exact path='/signup' render={({history}) => <Signup history={history}/>}/>
             <Route exact path='/login' component={Login}/>
             <Route exact path='/tasks' component={MyTasks}/>
-            <Route exact path='/tasks/new' component={NewTaskForm}/>
+            <Route exact path='/tasks/new' component={TaskForm}/>
             <Route exact path='/tasks/:id' render={props => {
                 const task = tasks.find(task => task.id == props.match.params.id)
                 return <TaskDetail task={task} {...props} />}}/>
