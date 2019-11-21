@@ -14,7 +14,7 @@ const NewTaskForm = ({formData, users, history, updateNewTaskForm, createTask}) 
     
     const handleSubmit = event => {
         event.preventDefault()
-        createTask(formData)
+        createTask(formData, history)
     }
 
     return(
