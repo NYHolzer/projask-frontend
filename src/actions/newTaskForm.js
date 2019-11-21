@@ -5,3 +5,9 @@ export const updateNewTaskForm = (name, value) => {
         formData: { name, value }
     }
 }
+
+export const resetNewTaskForm = (name, value) => {
+    return {
+        type: "RESET_NEW_TASK_FORM"
+    }
+}
