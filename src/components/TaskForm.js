@@ -1,9 +1,8 @@
 import React from 'react';
 import { updateTaskForm } from '../actions/taskForm.js'
-import { createTask } from '../actions/myTasks.js'
 import { connect } from 'react-redux'
 
-const TaskForm = ({formData, users, history, updateTaskForm, createTask}) => {
+const TaskForm = ({formData, users, history, updateTaskForm, task, handleSubmit, editMode }) => {
 
     const { title, description } = formData
 
@@ -12,13 +11,11 @@ const TaskForm = ({formData, users, history, updateTaskForm, createTask}) => {
         updateTaskForm( name, value )
     }
     
-    const handleSubmit = event => {
-        event.preventDefault()
-        createTask(formData, history)
-    }
-
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={event => {
+            event.preventDefault()
+            handleSubmit(formData, history)
+          }}>
             <input 
                 placeholder = "title"
                 name="title"
@@ -31,7 +28,7 @@ const TaskForm = ({formData, users, history, updateTaskForm, createTask}) => {
                 onChange={handleChange}
                 value={description}
             />
-            <input type="submit" value="Create Task"/>
+            <input type="submit" value={ editMode ? "Update Task" : "Create Trip"}/>
         </form>
     )
     
@@ -45,7 +42,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect (mapStateToProps, {updateTaskForm, createTask}) (TaskForm);
+export default connect (mapStateToProps, {updateTaskForm }) (TaskForm);
 
 // Tasks Schema
 // t.string "title"
