@@ -4,6 +4,8 @@ export default (state = [], action) => {
             return action.tasks
         case "ADD_TASK":
             return state.concat(action.task)
+        case "UPDATE_TASK":
+            return state.map(task => task.id == action.task.id ? action.task : task)
         case "CLEAR_CURRENT_TASKS":
             return [] 
         default:
