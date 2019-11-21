@@ -6,7 +6,7 @@ export const updateNewTaskForm = (name, value) => {
     }
 }
 
-export const resetNewTaskForm = (name, value) => {
+export const resetNewTaskForm = () => {
     return {
         type: "RESET_NEW_TASK_FORM"
     }
