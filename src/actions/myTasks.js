@@ -1,3 +1,5 @@
+import { resetNewTaskForm } from './newTaskForm'
+
 // synchronous actions
 export const setMyTasks = (tasks) => {
     return {
@@ -43,6 +45,7 @@ export const createTask = (taskData, history) => {
                 alert(resp.error)
             } else {
             dispatch(addTask(resp))
+            dispatch(resetNewTaskForm())
             history.push(`/trips/${resp.id}`)
         }})
         .catch(console.log)
