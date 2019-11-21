@@ -12,6 +12,7 @@ import Logout from './components/Logout.js'
 import Signup from './components/Signup.js'
 import Home from './components/Home.js'
 import NewTaskForm from './components/NewTaskForm.js'
+import TaskDetail from './components/TaskDetail.js'
 
 class App extends React.Component {
 
@@ -20,7 +21,7 @@ class App extends React.Component {
   }
 
   render(){
-    const {loggedIn} = this.props
+    const {loggedIn, tasks} = this.props
     return (
       <div className="App">
           {loggedIn ? <NavBar /> : <Home /> }
@@ -29,6 +30,9 @@ class App extends React.Component {
             <Route exact path='/login' component={Login}/>
             <Route exact path='/tasks' component={MyTasks}/>
             <Route exact path='/tasks/new' component={NewTaskForm}/>
+            <Route exact path='/tasks/:id' render={props => {
+                const task = tasks.find(task => task.id == props.match.params.id)
+                return <TaskDetail task={task} {...props} />}}/>
           </Switch>
       </div>
     );
@@ -38,7 +42,8 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return ({
-    loggedIn: !!state.currentUser
+    loggedIn: !!state.currentUser,
+    tasks: state.myTasks
   })
 }
 
