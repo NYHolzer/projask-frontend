@@ -31,18 +31,6 @@ const NewTaskForm = ({formData, users, history, updateNewTaskForm, createTask}) 
                 onChange={handleChange}
                 value={description}
             />
-            {/* <input 
-                placeholder="assigned by"
-                name="assigned_by"
-                onChange={handleChange}
-                value={assigned_by}
-            />
-            <input 
-                placeholder= "project name"
-                name="project_id"
-                onChange={handleChange}
-                value={project_id} 
-            /> */}
             <input type="submit" value="Create Task"/>
         </form>
     )
