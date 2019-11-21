@@ -5,6 +5,7 @@ export const setMyTasks = (tasks) => {
         tasks
     } 
 }
+
 export const clearCurrentTasks = () => {
     return {
         type: "CLEAR_CURRENT_TASKS"
@@ -19,8 +20,7 @@ export const addTask = task => {
 }
 
 // asynchronous actions
-export const createTask = (taskData) => {
-    console.log(taskData)
+export const createTask = (taskData, history) => {
     const sendableTaskData = {
         task: {
             title: taskData.title,
@@ -28,7 +28,6 @@ export const createTask = (taskData) => {
             project_id: "1"
         }
     }
-    console.log(sendableTaskData)
     return dispatch => {
         return fetch("http://localhost:3001/api/v1/tasks", {
             credentials: "include",
@@ -39,6 +38,13 @@ export const createTask = (taskData) => {
             body: JSON.stringify(sendableTaskData)
         })
         .then (r => r.json())
-        .then (console.log)
+        .then (resp => {
+            if (resp.error) {
+                alert(resp.error)
+            } else {
+            dispatch(addTask(resp))
+            history.push(`/trips/${resp.id}`)
+        }})
+        .catch(console.log)
     }
 }
