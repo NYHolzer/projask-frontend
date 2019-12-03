@@ -28,7 +28,7 @@ const TaskForm = ({formData, users, history, updateTaskForm, task, handleSubmit,
                 onChange={handleChange}
                 value={description}
             />
-            <input type="submit" value={ editMode ? "Update Task" : "Create Trip"}/>
+            <input type="submit" value={ editMode ? "Update Task" : "Create Task"}/>
         </form>
     )
     
@@ -42,7 +42,7 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect (mapStateToProps, {updateTaskForm }) (TaskForm);
+export default connect (mapStateToProps, { updateTaskForm }) (TaskForm);
 
 // Tasks Schema
 // t.string "title"

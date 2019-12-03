@@ -62,15 +62,15 @@ export const createTask = (taskData, history) => {
 
 
 export const updateTask = (taskData, history) => {
-    console.log(taskData)
-    const sendableTaskData = {
-        task: {
-            title: taskData.title,
-            description: taskData.description,
-            project_id: "1"
-        }
-    }
+    console.log("before updateTask,", taskData)
     return dispatch => {
+        const sendableTaskData = {
+            task: {
+                title: taskData.title,
+                description: taskData.description,
+                project_id: "1"
+            }
+        }
         return fetch(`http://localhost:3001/api/v1/tasks/${taskData.taskId}`, {
             credentials: "include",
             method: "PATCH",
@@ -84,7 +84,8 @@ export const updateTask = (taskData, history) => {
             if (resp.error) {
                 alert(resp.error)
             } else {
-            dispatch(updateTaskSuccess(resp.data))
+            console.log("this is the response of update", resp)
+            dispatch(updateTaskSuccess(resp))
             history.push(`/tasks/${resp.id}`)
             }
         })

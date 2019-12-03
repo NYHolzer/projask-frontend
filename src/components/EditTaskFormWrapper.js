@@ -8,7 +8,7 @@ class EditTaskFormWrapper extends React.Component {
 
     // ({history, createTask}) =>
     componentDidMount(){
-        this.props.task && this.props.setFormDataForEdit(this.props.task)
+        
     }
 
     handleSubmit = (formData) => {
@@ -20,6 +20,7 @@ class EditTaskFormWrapper extends React.Component {
     }
 
     render() {
+        this.props.task && this.props.setFormDataForEdit(this.props.task)
         const { history, handleSubmit } = this.props
         return <TaskForm editMode history={this.history} handleSubmit={this.handleSubmit} />
     } 

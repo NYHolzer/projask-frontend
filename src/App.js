@@ -35,6 +35,7 @@ class App extends React.Component {
                 return <TaskDetail task={task} {...props} />}}/>
             <Route exact path='/tasks/:id/edit' render={props => {
                 const task = tasks.find(task => task.id == props.match.params.id)
+              
                 return <EditTaskFormWrapper editMode task={task} {...props} />
                 }}/>
           </Switch>
