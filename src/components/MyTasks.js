@@ -6,8 +6,19 @@ const MyTasks = props => {
     const taskCards = props.tasks.length > 0 ? 
         props.tasks.map(t => <TaskCard task={t} key={t.id}/>) : 
         null
+    const sortedTaskCards = props.tasks.map(t => <TaskCard task={t} taskName={t.title} key={t.id}/>).sort((a,b) => {
+                    var titleA = a.props.taskName.toUpperCase(); // ignore upper and lowercase
+                    var titleB = b.props.taskName.toUpperCase();
+                        if (titleA > titleB){
+                            return 1
+                        } else if (titleA < titleB){
+                            return -1
+                        }
+                    })
+    const pressed = props.pressed
+
     return (
-        taskCards
+        pressed ? sortedTaskCards : taskCards
     )
 }
 
