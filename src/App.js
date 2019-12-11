@@ -28,14 +28,13 @@ class App extends React.Component {
           <Switch>
             <Route exact path='/signup' render={({history}) => <Signup history={history}/>}/>
             <Route exact path='/login' component={Login}/>
-            <Route exact path='/tasks' component={MyTasks}/>
+            <Route exact path='/tasks' component={MainContainer}/>
             <Route exact path='/tasks/new' component={NewTaskFormWrapper}/>
             <Route exact path='/tasks/:id' render={props => {
                 const task = tasks.find(task => task.id == props.match.params.id)
                 return <TaskDetail task={task} {...props} />}}/>
             <Route exact path='/tasks/:id/edit' render={props => {
                 const task = tasks.find(task => task.id == props.match.params.id)
-              
                 return <EditTaskFormWrapper editMode task={task} {...props} />
                 }}/>
           </Switch>
